@@ -25,8 +25,8 @@ class Stack:
         self.storage = LinkedList()
     
     def __len__(self):
-        if len(self.size) == 0:
-            self.size = None
+        if self.size is None:
+            return self.size == None
         else:
             return self.size
     
@@ -60,6 +60,7 @@ class Stack:
 #     def pop(self):
 #         if len(self) > 0:
 #             # There are elements in the array. pop the last one.
-#             return self.storage.pop()
+#             removed = self.storage.pop()
+#             return removed
 #         else:
 #             return None
