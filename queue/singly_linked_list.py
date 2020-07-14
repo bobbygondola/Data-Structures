@@ -1,64 +1,10 @@
-# print("=============================================\n")
-# print("===============CLASS EXAMPLE=================\n")
-# # good class
-# class Dog:
-#     def __init__(self, name, status, cuteness = 0):
-#         self.name = name
-#         self.status = status
-#         self.cuteness = cuteness
-        
-#     def __str__(self):
-#         return f"Name: {self.name}, Status: {self.status}, Cuteness: {self.cuteness}"
 
-# dogs = {
-#     "toby": Dog("toby", "good", 10),
-#     "crumbs": Dog("crumbs", "good", 11),
-#     "cobo": Dog("cobo", "good", 10)
-    
-# }
+print("========================NODE==================")
 
-# print(dogs["crumbs"])
-
-
-# print("\n\n")
-# print("==============================================\n")
-# print("============CONSTANT EXAMPLE==================\n")
-
-
-
-# # constant rtc
-# # doesnt depend on the size of input/elements/list size
-# commands = ['n', 's', 'e', 'w']
-# print(commands[0])
-
-
-
-# print("\n\n")
-# print("===============================================\n")
-# print("============QUADRATIC EXAMPLE==================\n")
-
-
-# # quadratic 
-# # print out every combo of pairs of commands
-# for counter, x in enumerate(commands):
-#     for y in commands:
-#         print(counter, x, y)
-
-# print("\n\n")
-# print("===============================================\n")
-# print("============ENEUMERATE EXAMPLE==================\n")
-
-# # enumerate
-
-# my_list = ["one", "two", "three", "four", "five", "six"]
-
-# for counter, x in enumerate(my_list):         # also u can use key!
-#     print(counter, x)
-    
-print("\n\n")
-print("===============================================\n")
-print("============Linked List EXAMPLE==================\n")
-
+# constructor
+# get_value, returns value
+# get_next, returns self.next value
+# set_next, sets self.next to a new_next
 
 class Node:
     
@@ -75,6 +21,14 @@ class Node:
     def set_next(self, new_next):
         self.next = new_next
 
+
+# constructor
+
+# add_tail
+# remove_head
+# contains
+# get_max
+
 class LinkedList:
     
     def __init__(self):
@@ -83,13 +37,31 @@ class LinkedList:
     
     def add_to_tail(self, value):
         new_node = Node(value)
-        
         if self.head is None and self.tail is None:
             self.head = new_node
             self.tail = new_node
         else:
             self.tail.set_next(new_node)
             self.tail = new_node
+        
+    def remove_tail(self):
+        if not self.head:
+            return None
+
+        if self.head is self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            return value
+
+        current = self.head
+
+        while current.get_next() is not self.tail:
+            current = current.get_next()
+
+        value = self.tail.get_value()
+        self.tail = current
+        return value
 
     def remove_head(self):
         if self.head is None and self.tail is None:
@@ -107,7 +79,6 @@ class LinkedList:
         # set self.head to the Node after the head 
         self.head = self.head.get_next()
         return val
-    
     
     def contains(self, value):
         if not self.head:

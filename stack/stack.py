@@ -16,18 +16,50 @@ return elements in Last In First Out order.
 # pancakes
 # plates
 
+from singly_linked_list import LinkedList # linkedList
+
+# LinkedList implementation
 class Stack:
-    def __init__(self, storage = []):
+    def __init__(self):
         self.size = 0
-        self.storage = storage
-
+        self.storage = LinkedList()
+    
     def __len__(self):
-        return self.size
-
+        if len(self.size) == 0:
+            self.size = None
+        else:
+            return self.size
+    
     def push(self, value):
-        # we push to the top of the storage array
-        # push o head, pop from head etc
-        pass
-
+        self.storage.add_to_tail(value)
+        self.size += 1
+    
     def pop(self):
-        pass
+        if len(self) > 0:
+            # There are elements in the LinkedList. pop the last one.
+            removed_tail = self.storage.remove_tail()
+            self.size -= 1
+            return removed_tail
+        else:
+            return None
+        
+
+# # # array implementation
+# class Stack:
+#     def __init__(self):
+#         self.size = 0
+#         # self.storage = ?
+#         self.storage = []
+
+#     def __len__(self):
+#         return len(self.storage)
+
+#     def push(self, value):
+#         self.storage.append(value)
+
+#     def pop(self):
+#         if len(self) > 0:
+#             # There are elements in the array. pop the last one.
+#             return self.storage.pop()
+#         else:
+#             return None
