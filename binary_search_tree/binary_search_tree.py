@@ -59,14 +59,14 @@ class BSTNode:
     #       find on right node
     
     def contains(self, target):
-        if target < self.value:
-            if self.left:
-                return self.left.contains(target)
+        if target < self.value:             # RECURSION BASE TEST #
+            if self.left:                               # IF EXISTS #
+                return self.left.contains(target)           # RECURSIVELY CALL PASSING TARGET #
             else:
                 return False
-        elif target > self.value:
-            if self.right:
-                return self.right.contains(target)
+        elif target > self.value:           # RECURSION BASE TEST #
+            if self.right:                                 # IF EXISTS #
+                return self.right.contains(target)              # RECURSIVELY CALL PASSING TARGET #
             else:
                 return False
         else:
@@ -91,8 +91,8 @@ class BSTNode:
     """ PSEUDO FOR FOR_EACH """
     # Call fn on each self found in the tree
     # Call the function `fn` on the value of each node
-    # mimicking for each but on different DS
-    # recursively calling fn through the for_each fn
+    # mimicking for each in JS but in a DataStruc
+    # recursively calling fn, through the for_each method
     
     def for_each(self, fn):
         fn(self.value)
