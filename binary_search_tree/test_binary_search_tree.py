@@ -39,7 +39,7 @@ class BinarySearchTreeTests(unittest.TestCase):
     def test_for_each(self):
         arr = []
         cb = lambda x: arr.append(x)
-
+        
         v1 = random.randint(1, 101)
         v2 = random.randint(1, 101)
         v3 = random.randint(1, 101)
@@ -53,6 +53,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(v5)
 
         self.bst.for_each(cb)
+        print(arr)
 
         self.assertTrue(5 in arr)
         self.assertTrue(v1 in arr)

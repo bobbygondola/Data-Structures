@@ -72,32 +72,34 @@ class BSTNode:
         else:
             return True
                     
-                    
-                    
-            
-        
             
     """ PSEUDO FOR GET_MAX """
     # Return the maximum value found in the tree
+    
     # if theres a right:
-    #   get max on right
-    # else:
+    #   get max on right (recursively)
+    # else: ..IF NO MORE..
     #   return node.value
     
     def get_max(self):
-        if self.right:
-            return self.right.get_max()
-        else:
-            return self.value
+        if self.right:                      # RECURSION TEST
+            return self.right.get_max()                 # DIGS DEEPER AND RESETS
+        else:                               # NO MORE RIGHTS LEFT..AKA DEEPEST
+            return self.value                           # RETURN DEEPEST RIGHT SIDE
 
+
+    """ PSEUDO FOR FOR_EACH """
+    # Call fn on each self found in the tree
     # Call the function `fn` on the value of each node
     # mimicking for each but on different DS
+    # recursively calling fn through the for_each fn
+    
     def for_each(self, fn):
-        print(f"this -> {fn(self.value)}")
-        if self.left:
-            self.left.for_each(fn)
-        if self.right:
-            self.right.for_each(fn)
+        fn(self.value)
+        if self.left:                       # RECURSION TEST
+            self.left.for_each(fn)                  # RETURN EVERY LEFT INVOKED WITH (FN)
+        if self.right:                      # RECURSION TEST
+            self.right.for_each(fn)                 # RETURN EVERY RIGHT INVOKED WITH (FN)
             
 
     """ TOMORROW """
