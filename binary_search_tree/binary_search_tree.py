@@ -9,29 +9,98 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+# We dont need 2 different classes
+# are we currently only in one node while traversing? so self is the node we are currently using?
 class BSTNode:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
+    """ PSEUDO FOR INSERT """
     # Insert the given value into the tree
+    
+    # check if empty
+    # if empty, put node at root
+    # else if new_node < current.value
+    #   left.insert value
+    # if >=
+    #   right.insert value
+    
+    
     def insert(self, value):
-        pass
-
+        new_node = BSTNode(value)
+        if value < self.value:              # RECURSION BASE TEST #
+            if self.left is None:
+                self.left = new_node
+            else:                                   # RESTART FUNCTION #
+                self.left.insert(value)
+        else:                               # OTHER RECURSION TEST #
+            if self.right is None:           
+                self.right = new_node
+            else:
+                self.right.insert(value)            # RESTART FUNCTION #
+                
+                
+                
+    """ PSEUDO FOR CONTAINS/SEARCH """
     # Return True if the tree contains the value
     # False if it does not
+    
+    # if node is None:
+    #   return False
+    # if find.value == node.value
+    #   return true
+    # else 
+    #   if find < node.value   
+    #       find on left node
+    #   else:
+    #       find on right node
+    
     def contains(self, target):
-        pass
-
+        if target < self.value:
+            if self.left:
+                return self.left.contains(target)
+            else:
+                return False
+        elif target > self.value:
+            if self.right:
+                return self.right.contains(target)
+            else:
+                return False
+        else:
+            return True
+                    
+                    
+                    
+            
+        
+            
+    """ PSEUDO FOR GET_MAX """
     # Return the maximum value found in the tree
+    # if theres a right:
+    #   get max on right
+    # else:
+    #   return node.value
+    
     def get_max(self):
-        pass
+        if self.right:
+            return self.right.get_max()
+        else:
+            return self.value
 
     # Call the function `fn` on the value of each node
+    # mimicking for each but on different DS
     def for_each(self, fn):
-        pass
+        print(f"this -> {fn(self.value)}")
+        if self.left:
+            self.left.for_each(fn)
+        if self.right:
+            self.right.for_each(fn)
+            
 
+    """ TOMORROW """
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
