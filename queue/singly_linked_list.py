@@ -70,12 +70,12 @@ class LinkedList:
         # what if we only have a single elem in the linked list?
         # both head and tail are pointing at the same Node 
         if not self.head.get_next():
-            head = self.head 
+            value = self.head.get_value()
             # delete the linked list's head reference 
             self.head = None
             # also delete the linked list's tail reference 
             self.tail = None 
-            return head.get_value()
+            return value
         val = self.head.get_value()
         # set self.head to the Node after the head 
         self.head = self.head.get_next()

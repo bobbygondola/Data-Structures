@@ -13,6 +13,7 @@ return elements in Last In First Out order.
 
 # set it up with an array for storage
 
+# add and remove from the same side
 # pancakes
 # plates
 
@@ -44,7 +45,7 @@ class Stack:
             return None
         
 
-# # # array implementation
+# # array implementation
 # class Stack:
 #     def __init__(self):
 #         self.size = 0
@@ -55,12 +56,12 @@ class Stack:
 #         return len(self.storage)
 
 #     def push(self, value):
-#         self.storage.append(value)
+#         self.storage.append(value) ##0(1)
 
 #     def pop(self):
 #         if len(self) > 0:
 #             # There are elements in the array. pop the last one.
-#             removed = self.storage.pop()
+#             removed = self.storage.pop() ##0(1)
 #             return removed
 #         else:
 #             return None

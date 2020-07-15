@@ -28,11 +28,11 @@ class Queue:
     def __len__(self):
         return self.size
     
-    def enqueue(self, value):
+    def enqueue(self, value):         ### appending to the tail
         self.storage.add_to_tail(value)
         self.size += 1
     
-    def dequeue(self):
+    def dequeue(self):                ### removing from the head
         if self.size > 0:
             removed = self.storage.remove_head()
             self.size -= 1
@@ -40,6 +40,8 @@ class Queue:
         else:
             return None
         
+
+# CALLING, WILL ENQUEUE AND DEQUEUE TO WORK LIKE A REVOLING DOOR/LINE
 
 # class Queue:
     
@@ -51,11 +53,11 @@ class Queue:
 #         return len(self.storage)
 
 
-#     def enqueue(self, value):
+#     def enqueue(self, value):       # appending to the back
 #         self.storage.append(value)
 #         self.size += 1
 
-#     def dequeue(self):
+#     def dequeue(self):              # pop-ing from the front
 #         if self.storage == []:
 #             return None
 #         else:

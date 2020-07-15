@@ -83,7 +83,7 @@ class LinkedList:
     
     def add_to_tail(self, value):
         new_node = Node(value)
-        
+        #if empty
         if self.head is None and self.tail is None:
             self.head = new_node
             self.tail = new_node
@@ -97,12 +97,12 @@ class LinkedList:
         # what if we only have a single elem in the linked list?
         # both head and tail are pointing at the same Node 
         if not self.head.get_next():
-            head = self.head 
+            value = self.head.get_value()               ## study this!!! this is a better way to seek data
             # delete the linked list's head reference 
             self.head = None
             # also delete the linked list's tail reference 
             self.tail = None 
-            return head.get_value()
+            return value
         val = self.head.get_value()
         # set self.head to the Node after the head 
         self.head = self.head.get_next()
