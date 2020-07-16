@@ -36,7 +36,7 @@ class BSTNode:
                 self.left = new_node
             else:                                   # RESTART FUNCTION #
                 self.left.insert(value)
-        else:                               # OTHER RECURSION TEST #
+        else:                               # OTHER RECURSION TEST # if inserted moved down the list
             if self.right is None:           
                 self.right = new_node
             else:
@@ -58,19 +58,19 @@ class BSTNode:
     #   else:
     #       find on right node
     
-    def contains(self, target):
-        if target < self.value:             # RECURSION BASE TEST #
+    def contains(self, target):             # also check for empty DS/array :(
+        if self.value == target:            # TEST FOR A FOUND TARGET ON EACH ITERATION #
+            return True
+        if target < self.value:             # RECURSION BASE TEST # for  lower..
             if self.left:                               # IF EXISTS #
                 return self.left.contains(target)           # RECURSIVELY CALL PASSING TARGET #
             else:
                 return False
-        elif target > self.value:           # RECURSION BASE TEST #
+        elif target > self.value:           # RECURSION BASE TEST # for higher..
             if self.right:                                 # IF EXISTS #
                 return self.right.contains(target)              # RECURSIVELY CALL PASSING TARGET #
             else:
                 return False
-        else:
-            return True
                     
             
     """ PSEUDO FOR GET_MAX """
@@ -82,11 +82,29 @@ class BSTNode:
     #   return node.value
     
     def get_max(self):
+        
         if self.right:                      # RECURSION TEST
             return self.right.get_max()                 # DIGS DEEPER AND RESETS
         else:                               # NO MORE RIGHTS LEFT..AKA DEEPEST
             return self.value                           # RETURN DEEPEST RIGHT SIDE
-
+        
+    
+    # # iterative
+    # # keep a current largest that weve seen so far.
+    # # keep current pointer
+    #     current = self
+    #     while current.right:
+    #         current = current.right
+    #     return current.value
+    
+    
+    # iterate down the right child of the current node until no more..(max)
+    def get_min(self):
+        if self.left:
+            return self.left.get_min()
+        else:
+            return self.value
+    
 
     """ PSEUDO FOR FOR_EACH """
     # Call fn on each self found in the tree
@@ -102,23 +120,65 @@ class BSTNode:
             self.right.for_each(fn)                 # RETURN EVERY RIGHT INVOKED WITH (FN)
             
 
+
+
+
     """ TOMORROW """
+    
+    
+    """ 
+    DEPTH FIRST TRAVERSAL - go deep down one trail, come back up and try a new path, hitting all nodes.
+    
+    left first -> back up to any right branches
+    
+    """
+    
+    from collections import deque
+    
+    
+    
+    
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
-
+        print(self.value)
+        if self.left:
+            self.left.in_order_print(node)
+        if self.right:
+            self.right.in_order_print(node)
+        else:
+            print("Empty Sorry")
+        
+        
+        
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+    """ why does queue work for breadth first traversal 
+        what ds allows us to mimmick recusive --------- because recurive nature is FIFO by nature
+        
+        left to right
+        
+        """
     def bft_print(self, node):
         pass
+        # queue
+        # while loop that checks size
+        #   pointer variable that pdates at the beginning of each loop
+
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        print(self.value)
+        if self.left:
+            self.left.in_order_print(node)
+        if self.right:
+            self.right.in_order_print(node)
+        else:
+            return
 
     # Stretch Goals -------------------------
     # Note: Research may be required

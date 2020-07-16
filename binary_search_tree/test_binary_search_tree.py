@@ -53,7 +53,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(v5)
 
         self.bst.for_each(cb)
-        print(arr)
+        # print(arr)
 
         self.assertTrue(5 in arr)
         self.assertTrue(v1 in arr)
@@ -81,6 +81,7 @@ class BinarySearchTreeTests(unittest.TestCase):
     #     self.bst.in_order_print(self.bst)
 
     #     output = sys.stdout.getvalue()
+    #     print(output)
     #     self.assertEqual(output, "1\n2\n3\n4\n5\n6\n7\n8\n")
 
     #     sys.stdout = io.StringIO()
