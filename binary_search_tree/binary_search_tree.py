@@ -121,7 +121,7 @@ class BSTNode:
             
 
 
-
+# REVIEW THIS IF YOU WANT TO GET A JOB WORKING WITH ELON MUSK
 
     """ TOMORROW """
     
@@ -162,23 +162,33 @@ class BSTNode:
         
         """
     def bft_print(self, node):
-        pass
         # queue
         # while loop that checks size
         #   pointer variable that pdates at the beginning of each loop
+        queue = Queue()
+        queue.enqueue(self)
+        while queue.size > 0:
+            current_node = queue.dequeue()
+            if current_node.left:
+                queue.enqueue(current_node.left)
+            if current_node.right:
+                queue.enqueue(current_node.right)
+            print(current_node.value)
 
 
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        print(self.value)
-        if self.left:
-            self.left.in_order_print(node)
-        if self.right:
-            self.right.in_order_print(node)
-        else:
-            return
+        stack = Stack()
+        stack.push(self)
+        while stack.size > 0:
+            current_node = stack.pop()
+            if current_node.right:
+                stack.push(current_node.right)
+            if current_node.left:
+                stack.push(current_node.left)
+            print(current_node.value)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
